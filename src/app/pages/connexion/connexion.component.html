@@ -1,0 +1,109 @@
+<div class="main-container">
+  <div class="main">
+    <div class="flip-card" [class.flipped]="isFlipped">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <p class="title">connexion</p>
+            <form class="form" (ngSubmit)="login()" [formGroup]="formConnexion!">
+            <div class="wave-group">
+                <input required="" type="text" class="input"   formControlName=email>
+                <span class="bar"></span>
+                <label class="label">
+                    @for (item of 'email'; track $index) {
+                        <span  class="label-char" [style]="'--index:'+$index" >{{item}}</span>
+                    }       
+    
+                </label>
+              </div>
+    
+              <div class="pb-10">
+                <div class="wave-group">
+                    <input required="" type="text" class="input"  formControlName=password>
+                    <span class="bar"></span>
+                    <label class="label">
+                        @for (item of 'mot de passe '; track $index) {
+                            <span  class="label-char" [style]="'--index:'+$index" >{{item}}</span>
+                        }       
+        
+                    </label>
+                  </div>
+              </div>
+        
+              <button class="btn" type="submit">
+                <strong>connexion</strong>
+                <div id="container-stars">
+                  <div id="stars"></div>
+                </div>
+              
+                <div id="glow">
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                </div>
+              </button>
+            </form>
+              <div class="no-account-container">
+                <div class="mt-4">
+                  <a (click)="toggleFlip()"> pas de compte ? s'inscrire</a>
+                </div>
+              </div>
+          </div>
+          <div class="flip-card-back">
+            <p class="title">Inscription</p>
+            <form class="form" (ngSubmit)="signup()" [formGroup]="formInscription!"> 
+            <div class="p-10">
+              <div class="wave-group">
+                  <input required="" type="text" class="input"  formControlName=nom>
+                  <span class="bar"></span>
+                  <label class="label">
+                      @for (item of 'nom'; track $index) {
+                          <span  class="label-char" [style]="'--index:'+$index" >{{item}}</span>
+                      }       
+      
+                  </label>
+                </div>
+
+                <div class="wave-group">
+                  <input required="" type="text" class="input" formControlName=emailIns>
+                  <span class="bar"></span>
+                  <label class="label">
+                      @for (item of 'email'; track $index) {
+                          <span  class="label-char" [style]="'--index:'+$index" >{{item}}</span>
+                      }       
+      
+                  </label>
+                </div>
+
+                <div class="wave-group">
+                  <input required="" type="text" class="input"  formControlName=passwordIns>
+                  <span class="bar"></span>
+                  <label class="label">
+                      @for (item of 'mot de passe'; track $index) {
+                          <span  class="label-char" [style]="'--index:'+$index" >{{item}}</span>
+                      }       
+      
+                  </label>
+                </div>
+            </div>
+            <button class="btn" type="button">
+                <strong>s'inscire</strong>
+                <div id="container-stars">
+                  <div id="stars"></div>
+                </div>
+              
+                <div id="glow">
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                </div>
+              </button>
+              </form>
+              <div class="no-account-container mt-4">
+                <div>
+                  <a (click)="toggleFlip()"> dèja un compte ? , se connecter</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      
+</div>
+</div>
