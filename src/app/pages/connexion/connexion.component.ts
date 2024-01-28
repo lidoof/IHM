@@ -23,7 +23,8 @@ email: string="";
 password: string="";
 emailIns: string="";
 passwordIns:string="";
-nom:string=""
+nom:string="";
+prenom:string="";
 
 ngOnInit() {
   this.formConnexion = this.fb.group({
@@ -34,7 +35,8 @@ ngOnInit() {
   this.formInscription = this.fb.group({
     emailIns: ['', Validators.required],
     passwordIns: ['', Validators.required],
-    nom:['',Validators.required]
+    nom:['',Validators.required],
+    prenom:['',Validators.required]
   })
 }
 
@@ -48,6 +50,7 @@ ngOnInit() {
 
   login(): void {
     const credential = this.formConnexion?.value as CredentialUser;
+    this.formConnexion?.markAllAsTouched();
     if (this.formConnexion?.invalid) {
       return;
     }
@@ -57,6 +60,7 @@ ngOnInit() {
   
   signup(): void {
     const credential = this.formInscription?.value as CredentialUser;
+      this.formInscription?.markAllAsTouched();
     if (this.formInscription?.invalid) {
       return;
     }

@@ -1,0 +1,21 @@
+<span class="mat-dialog-container m-0 p-0">
+  <h1 mat-dialog-title style="color:rgb(0, 137, 250)">Ajout de fonds</h1>
+<div mat-dialog-content>
+  <p style="color:rgb(0, 137, 250)">Entrez le montant à ajouter à votre portefeuille:</p>
+  <mat-form-field>
+    <mat-label style="color:rgb(0, 137, 250)">Montant</mat-label>
+    <input matInput [(ngModel)]="amount">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Devise</mat-label>
+    <mat-select [(value)]="currency">
+      <mat-option value="USD">USD</mat-option>
+      <mat-option value="EUR">EUR</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+<button mat-button class="dialog-button" (click)="onNoClick()">Annuler</button>
+<button mat-button class="dialog-button" [mat-dialog-close]="data" (click)="addFound()" cdkFocusInitial>Alimenter</button>
+</div>
+</span>

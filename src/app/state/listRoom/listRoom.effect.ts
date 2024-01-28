@@ -16,10 +16,11 @@ export class ListRoomEffects {
       actions$.pipe(
         ofType(SessionActions.listRoomSubmit),
         switchMap((action) => {
+       console.log('dispatcijg',);   
           this.listRoomRepo.updateLoadinglistRoom(true);
-          return this.listRoomService.getAllRoom().pipe(
-            map((session: any) => {
-              return SessionActions.listRoomSubmitSuccess({ session });
+          return this.listRoomService.getAllRoom(action.roomType).pipe(
+            map((room: any) => {
+              return SessionActions.listRoomSubmitSuccess({ room });
             }),
             catchError((error: string) => {
               return of(SessionActions.listRoomSubmitError({ error }));
@@ -34,7 +35,7 @@ export class ListRoomEffects {
       ofType(SessionActions.listRoomSubmitSuccess),
       tap(async (action) => {
         this.listRoomRepo.updateLoadinglistRoom(false);
-        this.listRoomRepo.setEntities(action.session);
+        this.listRoomRepo.setEntities(action.room);
       }),
     );
   });
@@ -43,6 +44,7 @@ export class ListRoomEffects {
     return actions$.pipe(
       ofType(SessionActions.listRoomSubmitError),
       tap(async (action) => {
+        console.log("actionm: ",action.error);
         this.listRoomRepo.updateLoadinglistRoom(false);
       }),
     );

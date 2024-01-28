@@ -1,0 +1,59 @@
+.mat-dialog-container {
+  background: linear-gradient(to bottom, #191970, #000000); /* Fond avec un dégradé */
+  color: #fff; /* Texte blanc */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur */
+  max-width: 600px; /* Largeur maximale pour le desktop */
+  width: auto; /* S'adapte à la largeur du contenu */
+  overflow: hidden; /* Cache les débordements */
+  font-family: 'Orbitron', sans-serif; /* Police personnalisée */
+}
+
+.mat-dialog-title {
+  font-size: 1.5em; /* Taille de la police pour le titre */
+  margin-bottom: 24px; /* Espacement en dessous du titre */
+}
+
+.mat-dialog-content {
+  font-size: 1em; /* Taille de la police pour le contenu */
+  margin-bottom: 24px; /* Espacement en dessous du contenu */
+  padding: 0 24px; /* Padding horizontal pour le contenu */
+  max-height: 300px; /* Hauteur maximale avant de scroller */
+  overflow-y: auto; /* Permettre le scroll vertical si nécessaire */
+}
+
+.mat-form-field {
+  width: 100%; /* Pleine largeur pour les champs */
+  margin-bottom: 24px; /* Espacement en dessous des champs */
+}
+
+.mat-form-field-label {
+  color: #fff; /* Couleur du label dans les champs de formulaire */
+}
+
+.mat-input-element, .mat-select {
+  background-color: transparent; /* Fond transparent pour les champs */
+  color: #fff; /* Couleur du texte pour les champs */
+  border: 1px solid #fff; /* Bordure blanche pour les champs */
+  border-radius: 5px; /* Bordures arrondies pour les champs */
+  padding: 8px 16px; /* Padding pour les champs */
+}
+
+.mat-dialog-actions {
+  display: flex; /* Utiliser flexbox pour aligner les actions */
+  justify-content: space-between; /* Espacer les boutons */
+  padding: 0 24px; /* Padding horizontal pour les actions */
+}
+
+.dialog-button {
+  background-color: #0366d6; /* Fond bleu pour les boutons */
+  color: #fff; /* Texte blanc pour les boutons */
+  font-size: 18px; /* Taille de la police pour les boutons */
+  padding: 10px 20px; /* Padding pour les boutons */
+  border-radius: 5px; /* Bordures arrondies pour les boutons */
+  border: none; /* Pas de bordure pour les boutons */
+  cursor: pointer; /* Curseur pointeur pour indiquer la cliquabilité */
+}
+
+.dialog-button:hover {
+  background-color: #00296e; /* Changement de fond au survol */
+}

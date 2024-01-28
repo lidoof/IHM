@@ -1,0 +1,60 @@
+<div class="main-container">
+    <div class="main">
+      <div class="flip-card" >
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <p class="title">reservation</p>
+              <form class="form mt-4" (ngSubmit)="reserver()" [formGroup]="form!">
+              <div class="wave-group">
+                <label class="label ml-2">
+                    @for (item of 'date  de check in'; track $index) {
+                        <span  class="label-char" [style]="'--index:'+$index" >{{item}}</span>
+                    }       
+    
+                </label>    
+                <span class="mt-10">
+                    <mat-form-field >
+                        <input  matInput  formControlName=checkInDate [matDatepicker]="picker" [(ngModel)]="checkInDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                    </mat-form-field>
+                </span>
+                </div>
+                <div class="wave-group">
+                    <input required="" type="text"  class="input"  formControlName=numberOfNights>
+                    <span class="bar"></span>
+                    <label class="label">
+                        @for (item of 'nombre de nuit'; track $index) {
+                            <span  class="label-char" [style]="'--index:'+$index" >{{item}}</span>
+                        }       
+        
+                    </label>
+                    @if (form?.get('numberOfNights')?.invalid && (form?.get('numberOfNights')?.dirty || form?.get('numberOfNights')?.touched)) {
+                      <div class="mt-6">
+                        <div class="error-message"> nombre de nuit est requis.</div>
+                    </div>
+                    }
+                  </div>
+
+
+                <button class="btn mt-4" type="submit">
+                  <strong>Reserver</strong>
+                  <div id="container-stars">
+                    <div id="stars"></div>
+                  </div>
+                
+                  <div id="glow">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                  </div>
+                </button>
+              </form>
+        
+            </div>
+          
+            </div>
+          </div>
+        </div>
+
+  </div>

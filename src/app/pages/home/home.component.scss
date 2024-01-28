@@ -210,6 +210,11 @@ body {
     transition: 0.35s 0.35s transform cubic-bezier(.1,.72,.4,.97);
   }
 }
+.mat-sidenav-container {
+  height: 100vh;
+  background-color: #0e0e0e; /* Définir la hauteur à 100% de la hauteur de la fenêtre */
+}
+
 .sidenavCont{
   z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999;
   width: 500px;
@@ -219,6 +224,7 @@ body {
  z-index: 10000;
 left: 20px;
 top: 20px;
+
 }
 header {
 	background: url('../../../assets/photo-1533458095310-008f5ef0cd24.png');
@@ -255,7 +261,7 @@ h1 {
 }
 
 h3, p {
-	font-family: sans-serif;
+	font-family: 'Orbitron', sans-serif;
 	margin-bottom: 30px;
 }
 
@@ -272,3 +278,94 @@ button {
 button:hover{
 	cursor: pointer;
 }
+
+/* Styles pour la sidebar cool */
+.sidebar-cool {
+  background-color: #0e0e0e; /* Noir foncé */
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  
+  /* Autres styles pour la sidebar ici */
+}
+
+/* Styles pour les boutons et les liens */
+.sidebar-cool .mat-button {
+  color: #0366d6;
+}
+
+.sidebar-cool .mat-button:hover {
+  background-color: #0366d6;
+  color: #fff;
+}
+
+.sidebar-cool .card-hover__link {
+  color: #0366d6;
+}
+
+.sidebar-cool .card-hover__link:hover {
+  color: #00296e;
+}
+
+.sidebar-cool .wallet-button {
+  background-color: #042464;
+  color: #fff;
+}
+
+.sidebar-cool .wallet-button:hover {
+  background-color: #042464;
+}
+
+/* Charte graphique */
+.sidebar-cool h1, .sidebar-cool h2, .sidebar-cool h3, .sidebar-cool h4, .sidebar-cool h5, .sidebar-cool h6 {
+  font-weight: bold;
+  margin: 0;
+}
+
+.sidebar-cool h1 {
+  font-size: 36px;
+}
+
+.sidebar-cool h2 {
+  font-size: 24px;
+}
+
+.sidebar-cool h3 {
+  font-size: 18px;
+}
+
+.sidebar-cool p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Autres styles spécifiques à la sidebar */
+.sidebar-cool .wallet-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.sidebar-cool .wallet-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.sidebar-cool .wallet-balance {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.sidebar-cool .wallet-button {
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Styles pour les icônes */
+.sidebar-cool mat-icon {
+  font-size: 24px;
+  vertical-align: middle;
+}
+
+
+

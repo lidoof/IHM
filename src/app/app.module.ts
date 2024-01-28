@@ -10,12 +10,16 @@ import { provideEffectsManager, provideEffects } from '@ngneat/effects-ng';
 import { SessionEffects } from './state/auth/auth.effect';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { WalletComponent } from './pages/home/wallet/wallet.component';
+import { ProfilEffects } from './state/profil/profil.effect';
+import { WalletEffects } from './state/wallet/wallet.effect';
+import { ListRoomEffects } from './state/listRoom/listRoom.effect';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WalletComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,12 +27,19 @@ import { WalletComponent } from './pages/home/wallet/wallet.component';
     ConnexionComponent,
     HomeComponent,
     HttpClientModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    
     BrowserAnimationsModule
   ],
   providers: [
     provideEffectsManager(),
     provideEffects(
       SessionEffects,
+      ProfilEffects,
+      WalletEffects,
+      ListRoomEffects
     ),
       HttpClient
   ],

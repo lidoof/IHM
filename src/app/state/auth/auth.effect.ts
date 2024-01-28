@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { SessionRepository } from './auth.store';
 import { AuthService } from '../../services/auth.service';
-
+import { profilSubmit } from '../profil/profil.action';
 
 @Injectable({ providedIn: 'root' })
 export class SessionEffects {
@@ -21,6 +21,7 @@ export class SessionEffects {
               return SessionActions.loginSubmitSuccess({ session });
             }),
             catchError((error: string) => {
+              console.log("error submit: ",error);
               return of(SessionActions.loginSubmitError({ error }));
             }),
           );
@@ -32,6 +33,7 @@ export class SessionEffects {
     return actions$.pipe(
       ofType(SessionActions.loginSubmitSuccess),
       tap(async (action) => {
+        this.router.navigate(['/home'])
         this.sessionRepo.updateLoadingSession(false);
         this.sessionRepo.setEntities(action.session);
       }),
@@ -71,6 +73,7 @@ export class SessionEffects {
     return actions$.pipe(
       ofType(SessionActions.signupSubmitSuccess),
       tap(async (action) => {
+        dispatch(profilSubmit({id:action.session.CustomerId}))
         this.sessionRepo.updateLoadingSession(false);
         this.sessionRepo.setEntities(action.session);
       }),

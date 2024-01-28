@@ -1,13 +1,41 @@
-<h1 mat-dialog-title>faites votre reservation</h1>
+<!-- @if ((loading$ | async ) === true) {
+ <div class="flex items-center justify-center h-full m-30">
+  <mat-spinner></mat-spinner>
+ </div>
+} @else if( info$ | async) {
+  <span *ngIf="info$ | async as info">
+    <h1 mat-dialog-title>chambre de type {{data.title}}</h1>
 <mat-dialog-content class="mat-typography">
   
-  <h3>vous êtes a quelques cliques de votre.....</h3>
+  <h3>vous êtes a quelques cliques de votre {{data.title}}</h3>
 
-  <p>An app's components typically define many views, arranged hierarchically. Angular provides
-  the Router service to help you define navigation paths among views. The router provides
-  sophisticated in-browser navigational capabilities.</p>
+  <p>votr chambre  est une chambre avec un {{info.amenities.$values.at(0)}}
+  et contient:
+  {{info.amenities.$values}} &nbsp;
+</p>
+<p *ngFor="let item of info.amenities.$values; let isFirst = first"> 
+  {{item}} <br>
+</p>
+
+<p> Pour un prix de  {{info.pricePerNight}} par nuit</p>
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Retour</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Reserver</button>
+  <button mat-button [mat-dialog-close]="true" (click)="makeReservation()" >Reserver</button>
 </mat-dialog-actions>
+  </span>
+
+} @else {
+  <div class="h-32 w-32 flex justify-center items-center mx-6">
+    <p>
+      cette carte ne contient pas encore d'info
+    </p>
+  </div>
+} -->
+
+<div class="m-30">
+  <button (click)="makeReservation()">
+    reserver
+  </button>
+</div>

@@ -1,0 +1,47 @@
+/* Styles pour le cadran Wallet */
+.wallet {
+  background: linear-gradient(to bottom, #191970, #000000);
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  margin: 10px;
+  position: relative; /* Ajout d'une position relative pour gérer la profondeur */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Effet de profondeur avec ombre */
+}
+
+.wallet-logo {
+  display: flex;
+  justify-content: center; /* Centre l'image horizontalement */
+  align-items: center; /* Centre l'image verticalement */
+  margin-bottom: 20px; /* Espacement entre l'image et le contenu */
+}
+
+.wallet-logo img {
+  max-width: 100px; /* Ajustez la largeur de l'image en conséquence */
+}
+
+.wallet-content {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.wallet-balance {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #fff; /* Couleur du texte modifiée pour correspondre à la sidebar */
+}
+
+.wallet-button {
+  background-color: #0366d6; /* Couleur du bouton modifiée pour correspondre à la sidebar */
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.wallet-button:hover {
+  background-color: #00296e; /* Couleur de survol du bouton modifiée pour correspondre à la sidebar */
+}
+

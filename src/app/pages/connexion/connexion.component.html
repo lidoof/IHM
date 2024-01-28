@@ -14,6 +14,12 @@
                     }       
     
                 </label>
+                  @if (formConnexion?.get('email')?.invalid && (formConnexion?.get('email')?.dirty || formConnexion?.get('email')?.touched)) {
+                    <div class="mt-6">
+                      <div class="error-message">Email est requis.</div>
+                  </div>
+                  }
+
               </div>
     
               <div class="pb-10">
@@ -26,6 +32,11 @@
                         }       
         
                     </label>
+                    @if (formConnexion?.get('password')?.invalid && (formConnexion?.get('password')?.dirty || formConnexion?.get('password')?.touched)) {
+                      <div class="mt-6">
+                        <div class="error-message">mot de passe est requis.</div>
+                    </div>
+                    }
                   </div>
               </div>
         
@@ -60,7 +71,29 @@
                       }       
       
                   </label>
+                  @if (formInscription?.get('nom')?.invalid && (formInscription?.get('nom')?.dirty || formInscription?.get('nom')?.touched)) {
+                    <div class="mt-6">
+                      <div class="error-message">nom est requis.</div>
+                  </div>
+                  }
                 </div>
+
+                <div class="wave-group">
+                  <input required="" type="text" class="input"  formControlName=prenom>
+                  <span class="bar"></span>
+                  <label class="label">
+                      @for (item of 'prenom'; track $index) {
+                          <span  class="label-char" [style]="'--index:'+$index" >{{item}}</span>
+                      }       
+      
+                  </label>
+                  @if (formInscription?.get('prenom')?.invalid && (formInscription?.get('prenom')?.dirty || formInscription?.get('prenom')?.touched)) {
+                    <div class="mt-6">
+                      <div class="error-message">prenom est requis.</div>
+                  </div>
+                  }
+                </div>
+
 
                 <div class="wave-group">
                   <input required="" type="text" class="input" formControlName=emailIns>
@@ -71,6 +104,11 @@
                       }       
       
                   </label>
+                  @if (formInscription?.get('emailIns')?.invalid && (formInscription?.get('emailIns')?.dirty || formInscription?.get('emailIns')?.touched)) {
+                    <div class="mt-6">
+                      <div class="error-message">email est requis.</div>
+                  </div>
+                  }
                 </div>
 
                 <div class="wave-group">
@@ -82,6 +120,11 @@
                       }       
       
                   </label>
+                  @if (formInscription?.get('passwordIns')?.invalid && (formInscription?.get('passwordIns')?.dirty || formInscription?.get('passwordIns')?.touched)) {
+                    <div class="mt-6">
+                      <div class="error-message">mot de passe est requis.</div>
+                  </div>
+                  }
                 </div>
             </div>
             <button class="btn" type="button">

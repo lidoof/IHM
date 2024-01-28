@@ -3,6 +3,11 @@
   background-size: cover; 
   background-position: center;   background-repeat: no-repeat;
 }
+.error-message{
+
+  color: rgb(151, 5, 0) !important;
+  font-size: 16px;
+}
 .main{
   height: 100vh;
   margin: 0;
@@ -16,7 +21,7 @@
   width: 500px;
   height: 500px;
   perspective: 1000px;
-  font-family: sans-serif;
+  font-family: 'Orbitron';
 }
  .form{
   display: flex;
@@ -61,13 +66,13 @@
 }
 
 .flip-card-front {
-  background:rgb(2, 68, 131);
+  background:rgb(7, 108, 202);
   color: rgb(155, 203, 248);
   opacity: 1;
 }
 
 .flip-card-back {
-  background:rgb(2, 68, 131);
+  background:rgb(7, 108, 202);
     color: rgb(155, 203, 248);
   transform: rotateY(180deg);
   opacity: 1;
@@ -184,7 +189,7 @@
 
 strong {
   z-index: 2;
-  font-family: 'sans-serif';
+  font-family: 'Orbitron';
   font-size: 12px;
   letter-spacing: 5px;
   color: #ffffff;

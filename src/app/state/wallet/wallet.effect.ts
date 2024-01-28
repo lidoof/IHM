@@ -18,7 +18,8 @@ export class WalletEffects {
         ofType(WalletActions.walletSubmit),
         switchMap((action) => {
           this.walletRepo.updateLoadingwallet(true);
-          return this.walletService.getWalletInfo().pipe(
+          //TODO A FAIIIIRE WALLET ID
+          return this.walletService.getWalletInfo(action.type).pipe(
             map((wallet: Wallet) => {
               return WalletActions.walletSubmitSuccess({ wallet});
             }),
@@ -43,6 +44,48 @@ export class WalletEffects {
   walletError$ = createEffect((actions$) => {
     return actions$.pipe(
       ofType(WalletActions.walletSubmitError),
+      tap(async (action) => {
+        this.walletRepo.updateLoadingwallet(false);
+      }),
+    );
+  });
+
+
+
+  addFound$ = createEffect(
+    (actions$) =>
+      actions$.pipe(
+        ofType(WalletActions.addFoundSubmit),
+        switchMap((action) => {
+          this.walletRepo.updateLoadingwallet(true);
+          //TODO A FAIIIIRE WALLET ID
+          return this.walletService.addFound(action.montant,action.currency,action.currency).pipe(
+            map((wallet: Wallet) => {
+              return WalletActions.addFoundSuccess({ wallet});
+            }),
+            catchError((error: string) => {
+              return of(WalletActions.addFoundError({ error }));
+            }),
+          );
+        }),
+      ),
+    { dispatch: true },
+  );
+
+
+  addFoundSuccess$ = createEffect((actions$) => {
+    return actions$.pipe(
+      ofType(WalletActions.addFoundSuccess),
+      tap(async (action) => {
+        this.walletRepo.updateLoadingwallet(false);
+        this.walletRepo.setEntities(action.wallet);
+      }),
+    );
+  });
+
+  addFoundError$ = createEffect((actions$) => {
+    return actions$.pipe(
+      ofType(WalletActions.addFoundError),
       tap(async (action) => {
         this.walletRepo.updateLoadingwallet(false);
       }),
