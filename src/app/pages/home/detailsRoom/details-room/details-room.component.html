@@ -1,23 +1,22 @@
-<!-- @if ((loading$ | async ) === true) {
- <div class="flex items-center justify-center h-full m-30">
+ @if ((loading$ | async ) === true) {
   <mat-spinner></mat-spinner>
- </div>
 } @else if( info$ | async) {
   <span *ngIf="info$ | async as info">
     <h1 mat-dialog-title>chambre de type {{data.title}}</h1>
 <mat-dialog-content class="mat-typography">
   
-  <h3>vous êtes a quelques cliques de votre {{data.title}}</h3>
+  <h3>vous êtes a quelques cliques de votre chambre {{data.title}}</h3>
 
-  <p>votr chambre  est une chambre avec un {{info.amenities.$values.at(0)}}
-  et contient:
-  {{info.amenities.$values}} &nbsp;
-</p>
-<p *ngFor="let item of info.amenities.$values; let isFirst = first"> 
-  {{item}} <br>
+  <p> votre chambre contient:
+    
+</p><br>
+<p *ngFor="let item of info.$values[0].amenities.$values;"> 
+  
+  {{item}}
+  <br>
 </p>
 
-<p> Pour un prix de  {{info.pricePerNight}} par nuit</p>
+<p> Pour un prix de  <span style="color:rgb(21, 81, 212)">{{info.$values[0].pricePerNight}}  €</span> par nuit</p>
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
@@ -32,10 +31,4 @@
       cette carte ne contient pas encore d'info
     </p>
   </div>
-} -->
-
-<div class="m-30">
-  <button (click)="makeReservation()">
-    reserver
-  </button>
-</div>
+} 

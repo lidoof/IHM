@@ -18,7 +18,8 @@ export class AuthGuard implements CanActivate {
       ?.getTheStore()
       .pipe(selectEntity('session'))
       .subscribe((session: any) => {
-        if (session?.token !== undefined) {
+        console.log("dsqdqsd",session.customerId)
+        if (session?.customerId !== undefined) {
           isCanActivate = true;
         } else {
           isCanActivate = false;

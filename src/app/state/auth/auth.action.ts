@@ -7,9 +7,9 @@ export const loginSubmitSuccess = createAction('[Session] Login  success', props
 
 export const loginSubmitError = createAction('[Session] Login submit error', props<{ error: string }>());
 
-export const signupSubmit = createAction('[Session] Login submit', props<{ credential: SingupModel }>());
+export const signupSubmit = createAction('[Session] signup submit', props<{ credential: SingupModel }>());
 
-export const signupSubmitSuccess = createAction('[Session] Login  success', props<{ session: Session }>());
+export const signupSubmitSuccess = createAction('[Session] signup  success', props<{ session: Session }>());
 
-export const signupSubmitError = createAction('[Session] Login submit error', props<{ error: string }>());
+export const signupSubmitError = createAction('[Session] signup error', props<{ error: string }>());
 

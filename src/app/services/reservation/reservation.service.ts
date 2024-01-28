@@ -18,6 +18,23 @@ export class ReservationService {
     return this.httpClient.post(url,reservation).pipe(
         catchError((error) => throwError(() => error.error?.message))
     )}
+
+    reservationconfirm(reservationid: string) {
+      const url = `${environment.apiUrl +URL.CONFIRMER_RESERVATION}${reservationid}`
+      return this.httpClient.post(url,reservationid).pipe(
+          catchError((error) => throwError(() => error.error?.message))
+      )
+    }
+
+    reservationcancel(reservationid: string) {
+      const url = `${environment.apiUrl +URL.CANCEl_RESERVATION}${reservationid}`
+      return this.httpClient.post(url,reservationid).pipe(
+          catchError((error) => throwError(() => error.error?.message))
+      )
+    }
+  
+
+
 }
 
 

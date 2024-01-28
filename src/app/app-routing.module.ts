@@ -5,16 +5,19 @@ import { AuthGuard } from './auth-guard.guard';
 const routes: Routes = [
   { path: 'sign-in',
   loadComponent: () => import('../app/pages/connexion/connexion.component').then((c) => c.ConnexionComponent),},
+
   {
     path:'home',
     loadComponent: () => import('../app/pages/home/home.component').then((c) => c.HomeComponent),
+    canActivate:[AuthGuard]
   },
   {
     path:'makeReserveation',
-    loadComponent: () => import('../app/pages/reservation/reservation.component').then((c)=> c.ReservationComponent)
+    loadComponent: () => import('../app/pages/reservation/reservation.component').then((c)=> c.ReservationComponent),
+    canActivate:[AuthGuard]
   },
   {path:'',
-    redirectTo:'sign-in',
+    redirectTo:'home',
   pathMatch:'prefix'}
 ];
 

@@ -19,7 +19,7 @@ export class WalletEffects {
         switchMap((action) => {
           this.walletRepo.updateLoadingwallet(true);
           //TODO A FAIIIIRE WALLET ID
-          return this.walletService.getWalletInfo(action.type).pipe(
+          return this.walletService.getWalletInfo(action.walledId).pipe(
             map((wallet: Wallet) => {
               return WalletActions.walletSubmitSuccess({ wallet});
             }),
@@ -59,9 +59,9 @@ export class WalletEffects {
         switchMap((action) => {
           this.walletRepo.updateLoadingwallet(true);
           //TODO A FAIIIIRE WALLET ID
-          return this.walletService.addFound(action.montant,action.currency,action.currency).pipe(
-            map((wallet: Wallet) => {
-              return WalletActions.addFoundSuccess({ wallet});
+          return this.walletService.addFound(action.montant,action.currency,action.walletId).pipe(
+            map((wallet: any) => {
+              return WalletActions.addFoundSuccess({ montant:wallet.balance});
             }),
             catchError((error: string) => {
               return of(WalletActions.addFoundError({ error }));
@@ -78,7 +78,7 @@ export class WalletEffects {
       ofType(WalletActions.addFoundSuccess),
       tap(async (action) => {
         this.walletRepo.updateLoadingwallet(false);
-        this.walletRepo.setEntities(action.wallet);
+        this.walletRepo.updateValue(action.montant)
       }),
     );
   });

@@ -18,7 +18,7 @@ export class ListRoomService {
      
       const params = new URLSearchParams();
       params.append('roomType', String(roomType));
-      const url = environment.apiUrl +URL.SEARCH_ROOM +params.toString();
+      const url = environment.apiUrl +URL.SEARCH_ROOM +'?'+params.toString();
       return this.httpClient.get(url).pipe(
         catchError((error)=>{
           throw new Error(error);

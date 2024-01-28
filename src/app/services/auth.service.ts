@@ -10,7 +10,7 @@ import { URL } from '../url-api';
 })
 export class AuthService {
   getprofilInfo(id: string):Observable<any> {
-    const url = environment.apiUrl + URL.CONNEXION
+    const url = `${environment.apiUrl + URL.GET_CUSTOMER}${id}`
     return this.httpClient.get(url).pipe(
       catchError((error)=>{
         throw new Error(error);
@@ -33,10 +33,9 @@ signup(user: SingupModel):Observable<any>{
 }
 
 login(user:CredentialUser):Observable<any>{
+  console.log('aappppel de login:')
   const url = environment.apiUrl + URL.CONNEXION
   return this.httpClient.post(url,user).pipe(
-    catchError((error)=>{
-      throw new Error(error);
-    })
+
   )}
 }

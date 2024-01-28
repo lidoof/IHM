@@ -3,7 +3,7 @@ export const URL ={
   CONNEXION:  '/api/customer/Authenticate',
   GET_CUSTOMER:'/api/customer/GetCustomer/',
   GET_WALLET: '/api/wallet/',
-  INSCIRPTION: '/api/customer/signup',
+  INSCIRPTION: '/api/customer/CreateCustomer',
   UPDATE_CUSTOMET:'/api/customer/UpdateCustomer/',
   RESERVATION:'/api/reservation/create',
   DELETE_WALLET:'/api/customer/DeleteCustomer/',

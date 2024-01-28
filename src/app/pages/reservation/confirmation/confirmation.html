@@ -1,0 +1,10 @@
+
+<mat-dialog-content   class="mat-typography">
+  
+  Confirmer cette reservation ? 
+ 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="cancel()">annuler</button>
+  <button mat-button [mat-dialog-close]="true" (click)="confirmer()" >confirmer</button>
+</mat-dialog-actions>

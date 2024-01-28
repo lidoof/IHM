@@ -13,16 +13,16 @@
     
                 </label>    
                 <span class="mt-10">
-                    <mat-form-field >
-                        <input  matInput  formControlName=checkInDate [matDatepicker]="picker" [(ngModel)]="checkInDate">
+                    <mat-form-field>
+                        <input  [min]="today" matInput formControlName=checkInDate [matDatepicker]="picker">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker  #picker></mat-datepicker>
+                        <mat-hint>YYYY-MM-DDDD</mat-hint>
                     </mat-form-field>
                 </span>
                 </div>
                 <div class="wave-group">
-                    <input required="" type="text"  class="input"  formControlName=numberOfNights>
+                    <input required="" type="number"  class="input"  formControlName=numberOfNights>
                     <span class="bar"></span>
                     <label class="label">
                         @for (item of 'nombre de nuit'; track $index) {

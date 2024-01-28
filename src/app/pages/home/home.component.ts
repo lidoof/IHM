@@ -38,19 +38,19 @@ export class HomeComponent implements OnInit {
 
   cards = [
     {
-      title: 'Suite',
+      title: 'suite',
       text: 'Description pour la carte 1',
       moreDetails: 'Plus de détails sur la carte 1',
       imageUrl: '../../../assets/Suite.png',
     },
     {
-      title: 'Standard',
+      title: 'standard',
       text: 'Description pour la carte 2',
       moreDetails: 'Plus de détails sur la carte 2',
       imageUrl: '../../../assets/Standard.png',
     },
     {
-      title: 'Superieur',
+      title: 'superior',
       text: 'Description pour la carte 3',
       moreDetails: 'Plus de détails sur la carte 3',
       imageUrl: '../../../assets/Superieur.png',
@@ -61,8 +61,8 @@ export class HomeComponent implements OnInit {
   profil:Observable<Profil> = this.profilRepo.getFirstEntity();
 
   ngOnInit(): void {
-    dispatch(listRoomSubmit);
     this.profil.subscribe((profil:Profil) => {
+      console.log("profil: ",profil.walletId,profil)
       dispatch(walletSubmit({walledId:profil.walletId}))
     })
   }
@@ -75,13 +75,15 @@ export class HomeComponent implements OnInit {
       data: selectedCard ,
       
     });
-    var y :Params | undefined;
     dialogRef.afterClosed().pipe(
+      
     ).subscribe((x:any)=>{
-      console.log(x);
-      y=x
+      if(x){
+        this.router.navigate(['makeReserveation']);
+      }
+
     })
-    this.router.navigate(['makeReserveation']);
+
   }
 }
 

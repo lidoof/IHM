@@ -6,6 +6,7 @@ import {
   selectAllEntities,
   selectFirst,
   setEntities,
+  updateEntities,
   withEntities,
 } from '@ngneat/elf-entities';
 import { localStorageStrategy, persistState } from '@ngneat/elf-persist-state';
@@ -43,6 +44,12 @@ export class WalletRepo {
   // restorer toute les valeurs du store
   resetRootValue() {
     walletStore.reset();
+  }
+
+  updateValue(value:number){
+    walletStore.update(
+      updateEntities('wallet', (entity) => ({ ...entity, balance: value }))
+    );
   }
   // pour mettre une entité wallet dans le store, avec l'id wallet
   setEntities(entities: any) {

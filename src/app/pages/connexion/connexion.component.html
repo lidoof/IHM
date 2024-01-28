@@ -96,7 +96,7 @@
 
 
                 <div class="wave-group">
-                  <input required="" type="text" class="input" formControlName=emailIns>
+                  <input required="" type="text" class="input" formControlName=email>
                   <span class="bar"></span>
                   <label class="label">
                       @for (item of 'email'; track $index) {
@@ -104,7 +104,7 @@
                       }       
       
                   </label>
-                  @if (formInscription?.get('emailIns')?.invalid && (formInscription?.get('emailIns')?.dirty || formInscription?.get('emailIns')?.touched)) {
+                  @if (formInscription?.get('email')?.invalid && (formInscription?.get('email')?.dirty || formInscription?.get('email')?.touched)) {
                     <div class="mt-6">
                       <div class="error-message">email est requis.</div>
                   </div>
@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="wave-group">
-                  <input required="" type="text" class="input"  formControlName=passwordIns>
+                  <input required="" type="password" class="input"  formControlName=motDePasse>
                   <span class="bar"></span>
                   <label class="label">
                       @for (item of 'mot de passe'; track $index) {
@@ -120,14 +120,14 @@
                       }       
       
                   </label>
-                  @if (formInscription?.get('passwordIns')?.invalid && (formInscription?.get('passwordIns')?.dirty || formInscription?.get('passwordIns')?.touched)) {
+                  @if (formInscription?.get('motDePasse')?.invalid && (formInscription?.get('motDePasse')?.dirty || formInscription?.get('motDePasse')?.touched)) {
                     <div class="mt-6">
                       <div class="error-message">mot de passe est requis.</div>
                   </div>
                   }
                 </div>
             </div>
-            <button class="btn" type="button">
+            <button class="btn"  type="submit">
                 <strong>s'inscire</strong>
                 <div id="container-stars">
                   <div id="stars"></div>

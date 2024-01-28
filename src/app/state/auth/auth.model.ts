@@ -5,7 +5,7 @@
   }
   export interface Session {
     id:string;
-    CustomerId: string;
+    customerId: string;
   }
   export interface SingupModel{
     nom: string;

@@ -20,9 +20,9 @@ export class SessionEffects {
             map((session: any) => {
               return SessionActions.loginSubmitSuccess({ session });
             }),
-            catchError((error: string) => {
-              console.log("error submit: ",error);
-              return of(SessionActions.loginSubmitError({ error }));
+            catchError((error:any) => {
+              console.log("error submit: ",error.error.error);
+              return of(SessionActions.loginSubmitError({ error:error.error.error }));
             }),
           );
         }),
@@ -35,7 +35,6 @@ export class SessionEffects {
       tap(async (action) => {
         this.router.navigate(['/home'])
         this.sessionRepo.updateLoadingSession(false);
-        this.sessionRepo.setEntities(action.session);
       }),
     );
   });
@@ -73,7 +72,8 @@ export class SessionEffects {
     return actions$.pipe(
       ofType(SessionActions.signupSubmitSuccess),
       tap(async (action) => {
-        dispatch(profilSubmit({id:action.session.CustomerId}))
+        console.log('action: success: ',action.session)
+        dispatch(profilSubmit({id:action.session.customerId}))
         this.sessionRepo.updateLoadingSession(false);
         this.sessionRepo.setEntities(action.session);
       }),

@@ -11,7 +11,6 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { listRoom } from '../../../../state/listRoom/listRoom.model';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog'
-import { ReservationComponent } from '../../../reservation/reservation.component';
 @Component({
   selector: 'app-details-room',
   templateUrl: './details-room.component.html',
@@ -30,12 +29,14 @@ export class DetailsRoomComponent implements OnInit {
     }
     @Input() ddata :any =""
     loading$: Observable<boolean> = this.listRoomRepo.loading$;
-    info$: Observable<listRoom> = this.listRoomRepo.getFirstEntity();
+    info$: Observable<any> = this.listRoomRepo.getFirstEntity();
     ngOnInit(): void {
 
         console.log("dsqdé",this.data.title);
-
-        dispatch(detailRoomAction.listRoomSubmit({roomType:this.data.title}))
+      this.info$.subscribe((x)=>{
+        console.log(x.$values[0])
+      })
+        dispatch(detailRoomAction.listRoomSubmit({roomType:this.data.title}));
        
     }
 

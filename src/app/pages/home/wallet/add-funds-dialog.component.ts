@@ -5,12 +5,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { dispatch } from '@ngneat/effects';
-import { addFoundSubmit, walletSubmit } from '../../../state/wallet/wallet.action';
+import { Currency, addFoundSubmit, walletSubmit } from '../../../state/wallet/wallet.action';
 import { Observable } from 'rxjs';
-import { Wallet } from '../../../state/wallet/wallet.model';
-import { WalletRepo } from '../../../state/wallet/wallet.store';
+import { CommonModule } from '@angular/common';
+import { ProfilRepo } from '../../../state/profil/profil.store';
+import { Profil } from '../../../state/profil/profil.model';
 
 
 @Component({
@@ -18,37 +19,45 @@ import { WalletRepo } from '../../../state/wallet/wallet.store';
   templateUrl: './add-funds-dialog.component.html',
   styleUrls: ['./add-funds-dialog.component.scss'],
   standalone:true,
-  imports: [MatDialogModule, MatButtonModule,MatFormFieldModule,MatInputModule,MatSelectModule,FormsModule]
+  imports: [MatDialogModule, MatButtonModule,MatFormFieldModule,MatInputModule,MatSelectModule,FormsModule,
+    CommonModule,ReactiveFormsModule]
 })
 export class AddFundsDialogComponent implements OnInit {
 
     amount!: number;
-    currency!: string;
+    preferredCurrency!: Currency;
   constructor(
     public dialogRef: MatDialogRef<AddFundsDialogComponent>,
+    private fb :UntypedFormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
-      private walletRepo: WalletRepo) {}
+      private profilRepo: ProfilRepo) {}
+      readonly typecurrency = Currency;
 
+    form!: UntypedFormGroup
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  wallet$:Observable<Wallet> = this.walletRepo.getFirstEntity()
+  profil$:Observable<Profil> = this.profilRepo.getFirstEntity()
 
   ngOnInit(): void {
-   
+    this.form = this.fb.group({
+      amount:[null,Validators.required],
+      preferredCurrency:[null,Validators.required]
+    })
+    this.profil$.subscribe((wallet:Profil) => {
+      console.log("wallet: ",wallet)
+    })  
   }
 
 
   addFound() {
-      if(!this.amount){
-        alert('vous devez selectionner un montant')
-      } else if(this.currency !==('EUR' || 'USD')){
-        alert('vous devez selectionnez une devise')
-      } else {
-        this.wallet$.subscribe((wallet :Wallet ) => {
-          dispatch(addFoundSubmit({currency:this.currency,montant:this.amount,walletId:wallet.id}))
+    console.log("form:",this.form.value)
+        this.profil$.subscribe((wallet :Profil ) => {
+          console.log(wallet)
+          dispatch(addFoundSubmit({currency:this.form.get('preferredCurrency')?.value,
+          montant:this.form.get('amount')?.value,walletId:wallet.walletId}))
         })
-      }
+
     }
 }

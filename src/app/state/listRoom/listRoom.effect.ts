@@ -44,7 +44,7 @@ export class ListRoomEffects {
     return actions$.pipe(
       ofType(SessionActions.listRoomSubmitError),
       tap(async (action) => {
-        console.log("actionm: ",action.error);
+        console.log("action list room ",action.error);
         this.listRoomRepo.updateLoadinglistRoom(false);
       }),
     );

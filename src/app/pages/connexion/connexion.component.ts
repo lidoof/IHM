@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {  FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { CredentialUser } from '../../state/auth/auth.model';
-import { loginSubmit } from '../../state/auth/auth.action';
+import { CredentialUser, SingupModel } from '../../state/auth/auth.model';
+import { loginSubmit, signupSubmit } from '../../state/auth/auth.action';
 import { dispatch } from '@ngneat/effects';
 
 @Component({
@@ -33,8 +33,8 @@ ngOnInit() {
 
   });
   this.formInscription = this.fb.group({
-    emailIns: ['', Validators.required],
-    passwordIns: ['', Validators.required],
+    email: ['', Validators.required],
+    motDePasse: ['', Validators.required],
     nom:['',Validators.required],
     prenom:['',Validators.required]
   })
@@ -59,11 +59,13 @@ ngOnInit() {
 
   
   signup(): void {
-    const credential = this.formInscription?.value as CredentialUser;
+    const credential = this.formInscription?.value as SingupModel;
+    console.log("cslff", credential)
       this.formInscription?.markAllAsTouched();
     if (this.formInscription?.invalid) {
+      console.log("invalide");
       return;
     }
-    dispatch(loginSubmit({ credential }));
+    dispatch(signupSubmit({ credential }));
   }
 }
