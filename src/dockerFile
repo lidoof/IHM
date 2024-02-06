@@ -5,7 +5,7 @@ FROM node:21-alpine3.18 as build
 RUN echo "Installation d'Angular CLI..."
 RUN npm install @angular/cli
 
-WORKDIR /app
+WORKDIR /apps
 
 # Copier les fichiers de votre application Angular dans le conteneur
 RUN echo "Copie des fichiers de l'application Angular dans le conteneur..."
