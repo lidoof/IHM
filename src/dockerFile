@@ -1,9 +1,7 @@
 
 FROM node:21-alpine3.18 as build
 
-# Installation d'Angular CLI
-RUN echo "Installation d'Angular CLI..."
-RUN npm install @angular/cli
+
 
 WORKDIR /usr/app
 
@@ -11,6 +9,9 @@ WORKDIR /usr/app
 RUN echo "Copie des fichiers de l'application Angular dans le conteneur..."
 COPY . .
 
+# Installation d'Angular CLI
+RUN echo "Installation d'Angular CLI..."
+RUN npm install @angular/cli
 
 RUN echo "Installation des dépendances..."
 RUN npm install
